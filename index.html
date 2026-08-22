@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Abdulrahman Al-Jammal - Product / UX Designer</title>
+<meta name="description" content="Product and UX designer with 3+ years across product, agency and freelance work. Fintech fluency built from inside HSBC. Available for remote roles and freelance projects.">
+<link rel="preconnect" href="https://api.fontshare.com">
+<link href="https://api.fontshare.com/v2/css?f[]=satoshi@500,700,900&f[]=jetbrains-mono@400,700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0e1013;
+    --bg-raise: #15181d;
+    --line: #262b33;
+    --text: #e9ecef;
+    --text-dim: #9aa3ad;
+    --accent: #3ecf8e;
+    --accent-ink: #0b1f16;
+    --radius: 14px;
+    --font: 'Satoshi', system-ui, -apple-system, sans-serif;
+    --mono: 'JetBrains Mono', ui-monospace, monospace;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg); color: var(--text); font-family: var(--font);
+    font-weight: 500; line-height: 1.6; -webkit-font-smoothing: antialiased;
+  }
+  ::selection { background: var(--accent); color: var(--accent-ink); }
+  a { color: inherit; text-decoration: none; }
+  img { max-width: 100%; display: block; }
+  .wrap { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+
+  /* ---------- Nav ---------- */
+  nav {
+    position: sticky; top: 0; z-index: 50;
+    background: color-mix(in srgb, var(--bg) 82%, transparent);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--line);
+  }
+  .nav-inner { height: 68px; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+  .wordmark { font-weight: 900; font-size: 1.05rem; letter-spacing: -0.02em; }
+  .wordmark span { color: var(--accent); }
+  .nav-links { display: flex; gap: 24px; align-items: center; font-size: 0.92rem; color: var(--text-dim); }
+  .nav-links a:hover { color: var(--text); }
+  .avail {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.06em;
+    color: var(--accent); border: 1px solid color-mix(in srgb, var(--accent) 40%, transparent);
+    padding: 6px 12px; border-radius: 999px; white-space: nowrap;
+  }
+  .avail i {
+    width: 7px; height: 7px; border-radius: 50%; background: var(--accent);
+    animation: pulse 2.4s ease-in-out infinite;
+  }
+  @keyframes pulse { 0%,100% { opacity: 1 } 50% { opacity: 0.35 } }
+  .btn {
+    display: inline-block; background: var(--accent); color: var(--accent-ink);
+    font-weight: 700; padding: 10px 22px; border-radius: 999px;
+    transition: transform 0.2s cubic-bezier(0.16,1,0.3,1), background 0.2s;
+    white-space: nowrap;
+  }
+  .btn:hover { background: #52dda0; }
+  .btn:active { transform: scale(0.98); }
+  .btn-ghost { background: transparent; color: var(--text); border: 1px solid var(--line); }
+  .btn-ghost:hover { background: var(--bg-raise); border-color: #39404a; }
+
+  /* ---------- Hero ---------- */
+  .hero { padding: 84px 0 92px; }
+  .hero-grid { display: grid; grid-template-columns: 8fr 4fr; gap: 48px; align-items: end; }
+  .hero h1 {
+    font-size: clamp(2.1rem, 4.4vw, 3.3rem);
+    font-weight: 900; letter-spacing: -0.03em; line-height: 1.05;
+  }
+  .hero h1 .dodge {
+    display: inline-block; font-style: italic; color: var(--accent);
+    line-height: 1.1; padding-bottom: 4px; will-change: transform;
+    transition: transform 0.45s cubic-bezier(0.16, 1.4, 0.3, 1);
+    cursor: default;
+  }
+  .hero-sub { margin-top: 24px; color: var(--text-dim); font-size: 1.12rem; max-width: 46ch; }
+  .hero-ctas { margin-top: 36px; display: flex; gap: 14px; flex-wrap: wrap; }
+  .hero-side {
+    border-left: 1px solid var(--line); padding-left: 32px;
+    color: var(--text-dim); font-size: 0.95rem;
+    display: flex; flex-direction: column; gap: 18px;
+  }
+  .hero-side strong { color: var(--text); display: block; font-weight: 700; }
+
+  /* ---------- Sections ---------- */
+  section { padding: 88px 0; border-top: 1px solid var(--line); }
+  .sec-head { margin-bottom: 44px; max-width: 62ch; }
+  .sec-head h2 { font-size: clamp(1.7rem, 3.4vw, 2.4rem); font-weight: 900; letter-spacing: -0.02em; line-height: 1.1; }
+  .sec-head p { margin-top: 14px; color: var(--text-dim); }
+
+  /* ---------- Case files ---------- */
+  .work-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+  .case {
+    grid-column: span 2;
+    background: var(--bg-raise); border: 1px solid var(--line); border-radius: var(--radius);
+    overflow: hidden;
+    transition: border-color 0.25s, transform 0.3s cubic-bezier(0.16,1,0.3,1);
+  }
+  .case:hover { border-color: #39404a; transform: translateY(-3px); }
+  .case.half { grid-column: span 1; }
+
+  .file-strip {
+    display: flex; align-items: center; gap: 18px; flex-wrap: wrap;
+    padding: 12px 24px; border-bottom: 1px dashed var(--line);
+    font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.08em; color: var(--text-dim);
+  }
+  .file-strip b { color: var(--text); font-weight: 700; }
+  .file-strip .status { color: var(--accent); margin-left: auto; }
+
+  .case-inner { display: grid; grid-template-columns: 1.2fr 1fr; }
+  .case.half .case-inner { grid-template-columns: 1fr; }
+  .shot {
+    background: radial-gradient(120% 90% at 20% 10%, #1b2027 0%, #14171c 60%);
+    border-right: 1px solid var(--line);
+    min-height: 320px; display: flex; align-items: center; justify-content: center;
+    color: #556070; font-family: var(--mono); font-size: 0.8rem; text-align: center; padding: 24px;
+  }
+  .case.half .shot { border-right: 0; border-bottom: 1px solid var(--line); min-height: 210px; }
+  .case-body { padding: 30px 30px 34px; display: flex; flex-direction: column; }
+  .case-body h3 { font-size: 1.5rem; font-weight: 900; letter-spacing: -0.02em; }
+  .case-role { color: var(--text-dim); font-size: 0.88rem; margin-top: 2px; }
+
+  .cf-label {
+    font-family: var(--mono); font-size: 0.65rem; letter-spacing: 0.14em;
+    color: var(--text-dim); margin: 18px 0 6px;
+  }
+  .case-body p { color: var(--text-dim); font-size: 0.95rem; }
+
+  .decision-log {
+    margin-top: 18px; border: 1px solid var(--line); border-radius: 10px;
+    font-size: 0.88rem; overflow: hidden;
+  }
+  .decision-log .dl-row { display: grid; grid-template-columns: 92px 1fr; }
+  .decision-log .dl-row + .dl-row { border-top: 1px solid var(--line); }
+  .decision-log .dl-key {
+    font-family: var(--mono); font-size: 0.65rem; letter-spacing: 0.1em;
+    padding: 10px 12px; color: var(--text-dim); background: color-mix(in srgb, var(--bg) 55%, var(--bg-raise));
+  }
+  .decision-log .dl-val { padding: 9px 14px; color: var(--text); }
+  .decision-log .dl-val s { color: var(--text-dim); }
+
+  .verdict-row { margin-top: 22px; display: flex; align-items: center; gap: 18px; }
+  .stamp {
+    flex: none; font-family: var(--mono); font-weight: 700; font-size: 0.78rem;
+    letter-spacing: 0.1em; color: var(--accent); text-transform: uppercase;
+    border: 2px solid var(--accent); border-radius: 8px; padding: 8px 14px;
+    transform: rotate(-3deg);
+    box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--accent) 30%, transparent);
+  }
+  .verdict-row p { color: var(--text); font-size: 0.93rem; }
+  .case-link { margin-top: auto; padding-top: 22px; font-weight: 700; color: var(--accent); font-size: 0.95rem; }
+  .case-link:hover { text-decoration: underline; }
+
+  /* ---------- Approach ---------- */
+  .principles { display: flex; flex-direction: column; }
+  .principle {
+    display: grid; grid-template-columns: 96px 1fr 1.4fr; gap: 24px; align-items: baseline;
+    padding: 30px 0; border-bottom: 1px solid var(--line);
+  }
+  .principle:last-child { border-bottom: 0; }
+  .principle .num { font-family: var(--mono); color: var(--accent); font-size: 0.95rem; }
+  .principle h3 { font-size: 1.3rem; font-weight: 900; letter-spacing: -0.01em; }
+  .principle p { color: var(--text-dim); font-size: 0.98rem; }
+
+  /* ---------- About ---------- */
+  .about-grid { display: grid; grid-template-columns: 5fr 7fr; gap: 56px; align-items: start; }
+  .portrait {
+    aspect-ratio: 4/5; border-radius: var(--radius); border: 1px solid var(--line);
+    background: radial-gradient(120% 90% at 30% 15%, #1b2027 0%, #14171c 65%);
+    display: flex; align-items: center; justify-content: center;
+    color: #556070; font-family: var(--mono); font-size: 0.8rem; text-align: center; padding: 24px;
+  }
+  .about-copy p { color: var(--text-dim); margin-bottom: 18px; font-size: 1.05rem; }
+  .about-copy p strong { color: var(--text); }
+  .redact {
+    background: var(--line); color: transparent; border-radius: 3px; cursor: help;
+    transition: background 0.3s, color 0.3s; padding: 0 4px;
+  }
+  .redact:hover { background: color-mix(in srgb, var(--accent) 14%, transparent); color: var(--text); }
+  .facts { margin-top: 28px; display: grid; grid-template-columns: 1fr 1fr; gap: 12px 24px; font-size: 0.95rem; color: var(--text-dim); }
+  .facts div { padding: 14px 16px; background: var(--bg-raise); border: 1px solid var(--line); border-radius: 10px; }
+  .facts strong { color: var(--text); display: block; margin-bottom: 2px; }
+
+  /* ---------- Contact ---------- */
+  .contact h2 { font-size: clamp(2rem, 5vw, 3.4rem); font-weight: 900; letter-spacing: -0.03em; line-height: 1.05; max-width: 18ch; }
+  .contact .email {
+    display: inline-block; margin-top: 28px; font-size: clamp(1.1rem, 2.6vw, 1.6rem);
+    font-weight: 700; color: var(--accent); border-bottom: 2px solid var(--accent); padding-bottom: 2px;
+  }
+  .contact-meta { margin-top: 32px; color: var(--text-dim); font-size: 0.98rem; max-width: 52ch; }
+  .socials { margin-top: 36px; display: flex; gap: 14px; flex-wrap: wrap; }
+
+  footer { border-top: 1px solid var(--line); padding: 28px 0; color: var(--text-dim); font-size: 0.88rem; }
+  .foot-inner { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+  .colophon { margin-top: 10px; font-family: var(--mono); font-size: 0.72rem; color: #5b6570; }
+
+  /* ---------- Reveal motion ---------- */
+  .reveal { opacity: 0; transform: translateY(22px); transition: opacity 0.7s cubic-bezier(0.16,1,0.3,1), transform 0.7s cubic-bezier(0.16,1,0.3,1); }
+  .reveal.in { opacity: 1; transform: none; }
+  @media (prefers-reduced-motion: reduce) {
+    .reveal { opacity: 1; transform: none; transition: none; }
+    html { scroll-behavior: auto; }
+    .case, .btn, .hero h1 .dodge { transition: none; }
+    .avail i { animation: none; }
+  }
+
+  /* ---------- Mobile ---------- */
+  @media (max-width: 860px) {
+    .hero { padding: 52px 0 64px; }
+    .hero-grid, .about-grid { grid-template-columns: 1fr; gap: 36px; }
+    .hero-side { border-left: 0; border-top: 1px solid var(--line); padding: 24px 0 0; }
+    .case, .case.half { grid-column: span 2; }
+    .case-inner, .case.half .case-inner { grid-template-columns: 1fr; }
+    .shot { border-right: 0; border-bottom: 1px solid var(--line); min-height: 200px; }
+    .principle { grid-template-columns: 48px 1fr; }
+    .principle p { grid-column: 2; }
+    .nav-links { gap: 14px; }
+    .hide-m { display: none; }
+    section { padding: 64px 0; }
+    .file-strip .status { margin-left: 0; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap nav-inner">
+    <a href="#top" class="wordmark">AJ<span>.</span></a>
+    <div class="nav-links">
+      <span class="avail hide-m"><i></i>OPEN FOR PROJECTS</span>
+      <a href="#work">Work</a>
+      <a href="#about" class="hide-m">About</a>
+      <a href="#contact" class="btn">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero wrap" id="top">
+  <div class="hero-grid">
+    <div>
+      <h1>Design that survives <span class="dodge" id="dodge">contact</span> with the real world.</h1>
+      <p class="hero-sub">Product/UX designer with 3+ years across product, agency and freelance work. Now building fintech fluency from inside HSBC.</p>
+      <div class="hero-ctas">
+        <a href="#work" class="btn">View case files</a>
+        <a href="#contact" class="btn btn-ghost">Contact</a>
+      </div>
+    </div>
+    <aside class="hero-side">
+      <div><strong>Currently</strong>Designing + studying banking systems at HSBC</div>
+      <div><strong>Availability</strong>Open to remote roles and freelance projects</div>
+      <div><strong>Overlap</strong>Full EU hours, 4+ hours with US Eastern</div>
+    </aside>
+  </div>
+</header>
+
+<section id="work">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <h2>The case files</h2>
+      <p>I spend my days reviewing evidence for a bank. It shaped how I present design work: evidence first, analysis in the open, verdict at the end.</p>
+    </div>
+    <div class="work-grid">
+
+      <article class="case reveal">
+        <div class="file-strip"><b>CASE 01</b> SKYFLARES <span>OPENED 2024</span> <span class="status">STATUS: SHIPPED</span></div>
+        <div class="case-inner">
+          <div class="shot"><!-- TODO: SkyFlares hero shot, ~1200x900, export from Figma -->[ SkyFlares interface shot goes here ]</div>
+          <div class="case-body">
+            <h3>SkyFlares</h3>
+            <div class="case-role">AI storm-prediction platform · UX Research + Product Design</div>
+            <div class="cf-label">EVIDENCE</div>
+            <p>Mixed-method research showed one forecast serving three opposed audiences: researchers wanted raw depth, policymakers wanted decisions, the public wanted plain language.</p>
+            <div class="cf-label">ANALYSIS</div>
+            <div class="decision-log">
+              <div class="dl-row"><div class="dl-key">DECIDED</div><div class="dl-val">One tiered alert system, three reading depths</div></div>
+              <div class="dl-row"><div class="dl-key">REJECTED</div><div class="dl-val"><s>Three separate dashboards per audience</s></div></div>
+              <div class="dl-row"><div class="dl-key">BECAUSE</div><div class="dl-val">Shared truth beats fragmented views; maintenance triples with three UIs</div></div>
+            </div>
+            <div class="verdict-row">
+              <div class="stamp">Verdict: Usable science</div>
+              <p>Storm timers + simplified alert levels kept scientific accuracy without demanding a physics degree.</p>
+            </div>
+            <a class="case-link" href="#contact">Request the full case file</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="case half reveal">
+        <div class="file-strip"><b>CASE 02</b> ONBOARDING <span class="status">STATUS: SHIPPED</span></div>
+        <div class="case-inner">
+          <div class="shot"><!-- TODO: onboarding before/after, ~900x700 -->[ Onboarding redesign shot goes here ]</div>
+          <div class="case-body">
+            <h3>Onboarding redesign</h3>
+            <div class="case-role">700 Apps · Education platform · 2024</div>
+            <div class="cf-label">EVIDENCE</div>
+            <p>Usability testing exposed where new users dropped off in their first minutes, inside the constraints of the Saudi DGA design system.</p>
+            <div class="verdict-row">
+              <div class="stamp">+40% engagement</div>
+              <p>Rebuilt first-run flow, validated by post-launch numbers.</p>
+            </div>
+            <a class="case-link" href="#contact">Request the full case file</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="case half reveal">
+        <div class="file-strip"><b>CASE 03</b> CINEMAPHILE <span class="status">STATUS: PROTOTYPE</span></div>
+        <div class="case-inner">
+          <div class="shot"><!-- TODO: CinemaPhile dark-mode screens, ~900x700 -->[ CinemaPhile app screens go here ]</div>
+          <div class="case-body">
+            <h3>CinemaPhile</h3>
+            <div class="case-role">Concept + research · Mobile · 2023</div>
+            <div class="cf-label">EVIDENCE</div>
+            <p>Interviews surfaced a pain nobody was solving: missed scenes and long snack lines. Designed pre-ordering with QR seat delivery in a dark-mode UI built for a glowing screen in a dark room.</p>
+            <div class="verdict-row">
+              <div class="stamp">Tested prototype</div>
+              <p>Full research-to-prototype cycle: interviews, flows, usability-tested build.</p>
+            </div>
+            <a class="case-link" href="#contact">Request the full case file</a>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<section id="approach">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <h2>How I think about the work</h2>
+    </div>
+    <div class="principles">
+      <div class="principle reveal">
+        <div class="num">01</div>
+        <h3>Outcomes over deliverables</h3>
+        <p>Wireframes are not the job. The job is the number that moves after they ship. Every case file here is framed by what changed, not what was drawn.</p>
+      </div>
+      <div class="principle reveal">
+        <div class="num">02</div>
+        <h3>Trade-offs, shown honestly</h3>
+        <p>Good design is choosing what to lose. My decision logs show the option I rejected and why. Judgment is the skill; process is just its trail.</p>
+      </div>
+      <div class="principle reveal">
+        <div class="num">03</div>
+        <h3>Learn the system, then design it</h3>
+        <p>I took a role inside HSBC's compliance operation to understand banking from the operator's seat. You design better screens when you know what happens behind them.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="wrap">
+    <div class="about-grid">
+      <div class="portrait reveal"><!-- TODO: portrait photo, 4:5, natural light -->[ Portrait photo goes here ]</div>
+      <div class="about-copy reveal">
+        <div class="sec-head" style="margin-bottom:24px"><h2>About</h2></div>
+        <p>I'm Abdulrahman, a product designer from Cairo. I started designing in 2020, halfway into a <strong>Computer Science &amp; AI degree</strong>, and never stopped: agency work, a UK product studio, freelance clients, and a design community I led on campus.</p>
+        <p>In 2025 I made a deliberate detour: joining <strong>HSBC as a CDD/KYC analyst</strong> to learn how banks actually work: risk, regulation, and the systems users never see. That knowledge now travels with me into every fintech design decision.</p>
+        <p>Off the clock: <span class="redact" title="hover to declassify">Shaolin-certified in Kung Fu, earned in Qufu, China</span>, PADI Open Water diver, and I lose chess games I was winning.</p>
+        <div class="facts">
+          <div><strong>3+ years</strong>Product, agency, freelance</div>
+          <div><strong>CS + AI degree</strong>Design with technical fluency</div>
+          <div><strong>Fintech from inside</strong>HSBC compliance operations</div>
+          <div><strong>Dev-ready handoff</strong>HTML/CSS, Git, real handoffs</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="contact">
+  <div class="wrap">
+    <div class="reveal">
+      <h2>Have a product that needs clearer thinking?</h2>
+      <a class="email" href="mailto:abdu.aljammal@hotmail.com">abdu.aljammal@hotmail.com</a>
+      <p class="contact-meta">Open to remote product design roles and freelance engagements. Based in Cairo: full working-day overlap with Europe, and 4+ hours with US Eastern.</p>
+      <div class="socials">
+        <a class="btn btn-ghost" href="https://www.linkedin.com/in/abdul-rahman-al-jammal-b3b154216/" target="_blank" rel="noopener">LinkedIn</a>
+        <a class="btn btn-ghost" href="https://www.behance.net/abdurahmanaljammal" target="_blank" rel="noopener">Behance</a>
+        <a class="btn btn-ghost" href="https://github.com/AbdulrahmanAlJammal" target="_blank" rel="noopener">GitHub</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap foot-inner">
+    <div>
+      Abdulrahman Al-Jammal, 2026
+      <div class="colophon">Colophon: designed + built by me. Satoshi &amp; JetBrains Mono, hand-written CSS, token-based system, no framework.</div>
+    </div>
+    <div>Designed and built by me, in code.</div>
+  </div>
+</footer>
+
+<script>
+  // Scroll reveal via IntersectionObserver
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold: 0.15 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  // Signature interaction: "contact" dodges the cursor with a precise spring return.
+  // Stillness, then one fast precise movement. Disabled under reduced motion.
+  const dodge = document.getElementById('dodge');
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (dodge && !reduce && matchMedia('(pointer: fine)').matches) {
+    const RANGE = 110, MAX = 26;
+    document.querySelector('.hero').addEventListener('pointermove', (e) => {
+      const r = dodge.getBoundingClientRect();
+      const cx = r.left + r.width / 2, cy = r.top + r.height / 2;
+      const dx = cx - e.clientX, dy = cy - e.clientY;
+      const d = Math.hypot(dx, dy);
+      if (d < RANGE) {
+        const f = (1 - d / RANGE) * MAX;
+        dodge.style.transform = `translate(${(dx / d) * f}px, ${(dy / d) * f}px)`;
+      } else {
+        dodge.style.transform = '';
+      }
+    });
+    document.querySelector('.hero').addEventListener('pointerleave', () => { dodge.style.transform = ''; });
+  }
+</script>
+
+</body>
+</html>
